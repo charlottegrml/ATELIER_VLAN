@@ -190,9 +190,9 @@ Changer VLAN 10 en :
 ```
 
 Questions :
-- Combien d’hôtes max ?  
-- Quelle plage IP valide ?  
-- Peut-on encore communiquer avec VLAN 20 ?
+- Combien d’hôtes max ?  En /25, on a 128 adresses au total mais on enlève l’adresse réseau et l’adresse de broadcast donc 128 - 2 = 126 hôtes utilisables.
+- Quelle plage IP valide ?  192.168.10.1 à 192.168.10.126
+- Peut-on encore communiquer avec VLAN 20 ? Oui, mais uniquement si la configuration correspond. Si on passe en /25, il faut que la gateway du routeur soit configurée avec le même masque.
 
 ---
 
@@ -218,5 +218,8 @@ Extention | 2 |
 
 Si vous savez expliquer :
 > "Pourquoi deux VLAN ne communiquent pas sans routeur ?"
+Parce qu’un VLAN correspond à un domaine de broadcast distinct.
+Même s’ils sont sur le même switch, deux VLAN sont isolés au niveau couche 2.
+Pour qu’ils communiquent, il faut un routeur.
 
 Alors vous avez compris la segmentation réseau 👍
