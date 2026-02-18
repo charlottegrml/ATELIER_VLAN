@@ -155,7 +155,7 @@ Configurer IP + passerelle selon le plan d’adressage.
 PC1 → PC2  
 👉 Doit fonctionner
 
-<img width="1667" height="720" alt="image" src="https://github.com/user-attachments/assets/63e86d9c-cca8-4281-87f7-23d7319352a8" />
+<img width="1642" height="663" alt="image" src="https://github.com/user-attachments/assets/a37c4852-60fb-4093-bcc8-88fa6d1d6322" />
 
 
 ---
@@ -164,16 +164,20 @@ PC1 → PC2
 PC1 → PC3  
 👉 Fonctionne uniquement grâce au routeur
 
-* * Copie d'écran ici * *  
+<img width="1600" height="673" alt="image" src="https://github.com/user-attachments/assets/26cbd676-3407-4c1d-b066-f8ed5c380254" />
   
 ---
 
 # ❓ Questions de réflexion
 
-1. Pourquoi PC1 ne voit-il pas PC3 sans routeur ? -> Répondez directement sur ce Readme.md 
-2. Quel rôle joue le masque /24 ? -> Répondez directement sur ce Readme.md  
-3. Que se passe-t-il si VLAN 10 et VLAN 20 ont le même réseau IP ? -> Répondez directement sur ce Readme.md  
+1. Pourquoi PC1 ne voit-il pas PC3 sans routeur ? -> Répondez directement sur ce Readme.md
+   Parce qu’ils ne sont pas dans le même réseau IP, PC1 est en 192.168.10.10/24 et PC3 en 192.168.20.10/24. Comme ce sont deux réseaux différents ils ont besoin d’un routeur pour communiquer.
+2. Quel rôle joue le masque /24 ? -> Répondez directement sur ce Readme.md
+   Le masque /24 (255.255.255.0) permet de séparer la partie réseau de la partie hôte dans l’adresse IP.
+3. Que se passe-t-il si VLAN 10 et VLAN 20 ont le même réseau IP ? -> Répondez directement sur ce Readme.md
+   Ça crée un conflit d’adressage. Deux VLAN doivent obligatoirement avoir des réseaux IP différents, sinon le routage inter-VLAN devient incohérent voire impossible à configurer correctement.
 4. Pourquoi un trunk est-il nécessaire ? -> Répondez directement sur ce Readme.md
+   Un trunk permet de faire passer plusieurs VLAN sur un seul lien physique. Les trames sont taguées avec l’ID du VLAN, ce qui permet au switch ou au routeur d’identifier à quel VLAN elles appartiennent.
 
 ---
 
